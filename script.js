@@ -34,7 +34,12 @@ function setVideoProgress() {
 
 //update stop video
 function stopVideo() {
-  return true;
+  video.currentTime = 0;
+  video.pause();
+}
+//update progress & timestamp
+function updateProgress() {
+  progress.value = (video.currentTime / video.duration) * 100;
 }
 
 //event listeners
