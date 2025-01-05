@@ -42,6 +42,24 @@ function updateProgress() {
   progress.value = (video.currentTime / video.duration) * 100;
 }
 
+//set video time to progress
+function setVideoProgress() {
+  video.currentTime = (+progress.value * video.duration) / 100;
+}
+
+//get mins
+let mins = Math.floor(video.currentTime / 60);
+if (mins < 10) {
+  mins = '0' + String(mins);
+}
+
+//get secs
+let secs = Math.floor(video.currentTime % 60);
+if (secs < 10) {
+  secs = '0' + String(secs);
+
+  timestamp.innerHTML = `${mins}:${secs}`;
+}
 //event listeners
 video.addEventListener('click', toggleVideoStatus);
 video.addEventListener('pause', updatePlayIcon);
